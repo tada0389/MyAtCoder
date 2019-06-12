@@ -1,2 +1,9 @@
 .vs/
+.vscode/
 Debug/
+test.exe
+a.exe
+MyAtCoderC++.sln
+MyAtCoderC++.vcxproj
+MyAtCoderC++.vcxproj.filters
+MyAtCoderC++.vcxproj.user
