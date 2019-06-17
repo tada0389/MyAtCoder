@@ -168,6 +168,11 @@
     <ClCompile Include="ABC129C.cpp" />
     <ClCompile Include="ABC129D.cpp" />
     <ClCompile Include="ABC129E.cpp" />
+    <ClCompile Include="ABC130A.cpp" />
+    <ClCompile Include="ABC130B.cpp" />
+    <ClCompile Include="ABC130C.cpp" />
+    <ClCompile Include="ABC130D.cpp" />
+    <ClCompile Include="ABC130E.cpp" />
     <ClCompile Include="AGC013Ccpp.cpp" />
     <ClCompile Include="AGC030B.cpp" />
     <ClCompile Include="AGC031A.cpp" />
@@ -179,6 +184,10 @@
     <ClCompile Include="BinarySearchSample.cpp" />
     <ClCompile Include="binary_searchSample2.cpp" />
     <ClCompile Include="bitskyouiku2.cpp" />
+    <ClCompile Include="dive2A.cpp" />
+    <ClCompile Include="dive2B.cpp" />
+    <ClCompile Include="dive2C.cpp" />
+    <ClCompile Include="dive2D.cpp" />
     <ClCompile Include="divertaA.cpp" />
     <ClCompile Include="divertaB.cpp" />
     <ClCompile Include="divertaC.cpp" />
@@ -199,6 +208,7 @@
     <ClCompile Include="ICPC2.cpp" />
     <ClCompile Include="JOI2007C.cpp" />
     <ClCompile Include="KakurituDP.cpp" />
+    <ClCompile Include="KitaitiDP.cpp" />
     <ClCompile Include="KruscalSample.cpp" />
     <ClCompile Include="LongestPath.cpp" />
     <ClCompile Include="msolA.cpp" />

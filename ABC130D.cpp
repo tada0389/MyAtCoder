@@ -45,13 +45,46 @@ ll lcm(ll a, ll b) {
 }*/
 
 
-int testmain() {
+int ABC130Dmain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n;
-	cin >> n;
-	cout <<n << endl;
+	ll n, k;
+	cin >> n >> k;
+	vector<ll> a(n);
+	rep(i, n) cin >> a[i];
+
+	// ‚µ‚á‚­‚Æ‚è
+
+	ll ans = 0;
+
+	int left = 0;
+	int right = 0;
+
+	ll sum = 0;
+	while (right <= n) {
+		//cout << sum << endl;
+		if (sum < k) {
+			if(right < n)
+				sum += a[right];
+			right++;
+			continue;
+		}
+		else {
+			// ‰E‚É‚ ‚é•ª‚¾‚¯‘«‚·
+			ans += (n - right + 1);
+			// left‚ð‘‚â‚µ‚Ä‚ ‚°‚é
+			sum -= a[left];
+			left++;
+			continue;
+		}
+		/*if (left == right) {
+			sum += a[right];
+			right++;
+		}*/
+	}
+
+	cout << ans << endl;
 
 	return 0;
 }

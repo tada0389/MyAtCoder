@@ -45,13 +45,24 @@ ll lcm(ll a, ll b) {
 }*/
 
 
-int testmain() {
+int ABC130Bmain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n;
-	cin >> n;
-	cout <<n << endl;
+	int n, x;
+	cin >> n >> x;
+	vector<int> l(n);
+	rep(i, n) cin >> l[i];
+
+	int ans = 1;
+	int d = 0;
+	rep(i, n) {
+		d = d + l[i];
+		if (d > x) break;
+		ans++;
+	}
+
+	cout << ans << endl;
 
 	return 0;
 }

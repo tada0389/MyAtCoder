@@ -44,14 +44,48 @@ ll lcm(ll a, ll b) {
 	return a / gcd(a, b) * b;
 }*/
 
-
-int testmain() {
+int dive2Dmain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
 	int n;
 	cin >> n;
-	cout <<n << endl;
+	vector<pair<ll, ll>> xy(n);
+	rep(i, n) cin >> xy[i].first >> xy[i].second;
+
+	sort(allof(xy), [](pair<ll, ll>x, pair<ll, ll>y) {
+		return x.first < y.first;
+	});
+	//sort(allof(xy));
+
+	map<pair<ll, ll>, ll> mp;
+
+	rep(i, n) {
+		//cout << xy[i].first << " " << xy[i].second << endl;
+		mp[{xy[i].first, xy[i].second}] = 1;
+	}
+
+	// p, qをそれぞれ適当にきめる
+	// n = 50
+	// 50 * 50 全探索
+
+	ll ans = inf;
+
+	//cout << mp[{1, 1}] << " " << mp[{2, 2}] << endl;
+	// マイナスにする意味はない
+	Rep(p, 0, n ) {
+		Rep(q, 0, n) {
+			if (p == 0 && q == 0) continue;
+			// 順に後ろを見ていく
+			ll tmp = 0;
+			rep(i, n) {
+				if (mp[{xy[i].first - p, xy[i].second - q}] != 1) tmp++;
+			}
+			ans = min(ans, tmp);
+		}
+	}
+
+	cout << ans << endl;
 
 	return 0;
 }

@@ -45,13 +45,15 @@ ll lcm(ll a, ll b) {
 }*/
 
 
-int testmain() {
+int ABC130Amain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n;
-	cin >> n;
-	cout <<n << endl;
+	int x, a;
+	cin >> x >> a;
+
+	if (x < a) cout << 0 << endl;
+	else cout << 10 << endl;
 
 	return 0;
 }

@@ -45,13 +45,30 @@ ll lcm(ll a, ll b) {
 }*/
 
 
-int testmain() {
+int ABC130Cmain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n;
-	cin >> n;
-	cout <<n << endl;
+	ll w, h, x, y;
+	cin >> w >> h >> x >> y;
+
+	double ans = 0.0;
+
+	// 2‚Â‚É•ªŠ„‚µ‚Ä¬‚³‚¢•û‚ÌÅ‘å’l
+
+	// ‚Ç‚±‚«‚Ä‚à”¼•ª‚É•ªŠ„‚Å‚«‚é
+
+	ans = double(w * h) / 2.0;
+
+	bool ok = true;
+	if (w % 2 == 1) ok = false;
+	if (h % 2 == 1) ok = false;
+	if (x != w / 2) ok = false;
+	if (y != h / 2) ok = false;
+	
+	cout << fixed << setprecision(10) << ans;
+	if (ok) cout << " " << 1 << endl;
+	else cout << " " << 0 << endl;
 
 	return 0;
 }

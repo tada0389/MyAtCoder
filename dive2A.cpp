@@ -45,13 +45,17 @@ ll lcm(ll a, ll b) {
 }*/
 
 
-int testmain() {
+int dive2Amain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n;
-	cin >> n;
-	cout <<n << endl;
+	int n, k;
+	cin >> n >> k;
+
+	if (k == 1) cout << 0 << endl;
+	else 
+		cout << n - k << endl;
+
 
 	return 0;
 }

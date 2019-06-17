@@ -1,96 +1,48 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
+#include <cstdio>
 #include <vector>
-#include <array>
-#include <queue>
-#include <map>
-#include <set>
-#include <sstream>
-#include <stdio.h>
+#include <algorithm>
 
 using namespace std;
 
-#define Rep(i,a,b) for(int i = a; i < b; i++)
-#define rep(i,b) Rep(i,0,b)
-#define rrep(i,a) for(int i = a; i >= 0; i--)
-#define allof(a) (a).begin(), (a).end()
-#define pb push_back
+vector<vector<int>> allPath(0, vector<int>());
+vector<vector<pair<int, int>>> G(101, vector<pair<int, int>>());
+int d;
+int a[510], b[510], f[510];
 
-typedef long long ll;
-const int inf = 1e9 + 7;
-const ll infll = 1 << 60LL;
-const ll mod = 1e9 + 7;
-// 0~3までは右左下上 4~7までは斜め
-constexpr int dx[] = { 1, 0, -1, 0, 1, 1, -1, -1 };
-constexpr int dy[] = { 0, -1, 0, 1, 1, -1, -1, 1 };
+void bfs(int next, vector<int> path, vector<bool> used) {
+	if (next == d - 1) {
+		allPath.push_back(path);
+	}
+	used[next] = true;
+	//cout << next << endl;
+	
+	for (int i = 0; i < (int)G[next].size(); i++) {
+		if (used[G[next][i].first]) continue;
+		auto tmp = path;
+		auto usedTmp = used;
+		tmp.push_back(G[next][i].first);
+		bfs(G[next][i].first, tmp, usedTmp);
+	}
+}
 
-// 型による変数のオーバーフローに気をつけろ！！
-// 悩んだら図やグラフを書け！！悩む前から書け！！
-
-int HCPC1Amain() {
-	cin.tie(0);
-	ios::sync_with_stdio(false);
-
-	ll n;
-	cin >> n;
-	vector<ll> c(n);
-	rep(i, n - 1) cin >> c[i+1];
-	// cはマイナスもある
-
-	vector<ll> x(n, -1);
-
-	// dp[i]:=i部屋までの最大値
-	vector<ll>ap(n+1, 0);
-	vector<ll>tp(n+1, 0); // 保存用 すべて通る
-	ap[0] = 0;
-	tp[0] = 0;
-	for (int i = 1; i < n; i++) {
-		tp[i] = tp[i - 1] + c[i];
-		if (c[i] > 0) {
-			ap[i] = ap[i-1] + c[i];
-		}
-		else {
-			ap[i] = max(ap[i - 1] + c[i], 0LL);
-		}
+int main() {
+	int c, n, m, s;
+	cin >> c >> n >> m >> s >> d;
+	for (int i = 0; i < m; i++) {
+		cin >> a[i] >> b[i] >> f[i];
+		G[a[i] - 1].push_back({ b[i] - 1, f[i] });
+		G[b[i] - 1].push_back({ a[i] - 1, f[i] });
 	}
 
-	vector<ll>rap(n + 1, 0);
-	vector<ll>rtp(n + 1, 0);
-	rap[n] = 0;
-	rtp[n] = 0;
-	for (int i = n - 1; i >= 0; i--) {
-		rtp[i] = tp[i + 1] + c[i];
-		if (c[i] > 0) {
-			ap[i] = ap[i + 1] + c[i];
+	vector<bool> used(n, false);
+	vector<int> path(s - 1);
+	bfs(s - 1, path, used);
+
+	for (int i = 0; i < (int)allPath.size(); i++) {
+		for (int j = 0; j < (int)allPath[i].size(); j++) {
+			cout << allPath[i][j] << " ";
 		}
-		else {
-			ap[i] = max(ap[i + 1] + c[i], 0LL);
-		}
+		cout << endl;
 	}
-
-	rep(i, n) {
-		ll tMax = -1;
-		// 左と右の2パターン
-		/*if (i == 0) {
-			x[i] = ap[n-1];
-		}
-		else if (i == n) {
-			x[i] = tap[0];
-		}
-		{*/
-			// 右
-			tMax = max(tMax, ap[i]);
-			// 左
-			tMax = max(tMax, rap[i]);
-
-			x[i] = tMax;
-		//}
-	}
-
-	rep(i, n) {
-		cout << x[i] << endl;
-	}
-
-	return 0;
 }
