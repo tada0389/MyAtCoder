@@ -45,40 +45,21 @@ ll lcm(ll a, ll b) {
 }*/
 
 
-int ABC130Emain() {
+int ABC131Amain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n, m;
-	cin >> n >> m;
-	vector<int> s(n), t(m);
-	rep(i, n) cin >> s[i];
-	rep(i, m) cin >> t[i];
+	string s;
+	cin >> s;
 
-	vector<vector<ll>> sum(n + 1, vector<ll>(m + 1, 0));
-	vector<vector<ll>> dp(n + 1, vector<ll>(m + 1, 0));
-	dp[0][0] = 1;
-	rep(i, n) {
-		rep(j, m) {
-			if (s[i] == t[j]) {
-				dp[i + 1][j + 1] = sum[i][j] + 1;
-				dp[i + 1][j + 1] %= mod;
-			}
+	bool good = true;
 
-			sum[i + 1][j + 1] = dp[i + 1][j + 1] +
-				sum[i + 1][j] + sum[i][j + 1] - sum[i][j];
-		}
-	}
+	if (s[0] == s[1]) good = false;
+	if (s[1] == s[2]) good = false;
+	if (s[2] == s[3]) good = false;
 
-	ll ans = 0;
-	rep(i, n + 1) {
-		rep(j, m + 1) {
-			ans += dp[i][j];
-			ans %= mod;
-		}
-	}
-
-	cout << ans << endl;
+	if (good) cout << "Good" << endl;
+	else cout << "Bad" << endl;
 
 	return 0;
 }

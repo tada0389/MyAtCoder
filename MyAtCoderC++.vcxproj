@@ -173,6 +173,12 @@
     <ClCompile Include="ABC130C.cpp" />
     <ClCompile Include="ABC130D.cpp" />
     <ClCompile Include="ABC130E.cpp" />
+    <ClCompile Include="ABC131A.cpp" />
+    <ClCompile Include="ABC131B.cpp" />
+    <ClCompile Include="ABC131C.cpp" />
+    <ClCompile Include="ABC131D.cpp" />
+    <ClCompile Include="ABC131E.cpp" />
+    <ClCompile Include="ABC131Fcpp.cpp" />
     <ClCompile Include="AGC013Ccpp.cpp" />
     <ClCompile Include="AGC030B.cpp" />
     <ClCompile Include="AGC031A.cpp" />

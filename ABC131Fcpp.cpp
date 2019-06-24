@@ -45,40 +45,30 @@ ll lcm(ll a, ll b) {
 }*/
 
 
-int ABC130Emain() {
+int ABC131Fmain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n, m;
-	cin >> n >> m;
-	vector<int> s(n), t(m);
-	rep(i, n) cin >> s[i];
-	rep(i, m) cin >> t[i];
+	int n;
+	cin >> n;
+	vector<int>x(n), y(n);
+	rep(i, n) cin >> x[i] >> y[i];
 
-	vector<vector<ll>> sum(n + 1, vector<ll>(m + 1, 0));
-	vector<vector<ll>> dp(n + 1, vector<ll>(m + 1, 0));
-	dp[0][0] = 1;
-	rep(i, n) {
-		rep(j, m) {
-			if (s[i] == t[j]) {
-				dp[i + 1][j + 1] = sum[i][j] + 1;
-				dp[i + 1][j + 1] %= mod;
-			}
-
-			sum[i + 1][j + 1] = dp[i + 1][j + 1] +
-				sum[i + 1][j] + sum[i][j + 1] - sum[i][j];
-		}
-	}
+	// ’·•ûŒ`‚ğ’T‚·
 
 	ll ans = 0;
-	rep(i, n + 1) {
-		rep(j, m + 1) {
-			ans += dp[i][j];
-			ans %= mod;
-		}
+	// x²‚Æy² •ª‚¯‚Äl‚¦‚ê‚é
+	// map
+	vector<vector<int>> xy(100010, vector<int>());
+	vector<vector<int>> yx(100010, vector<int>());
+	rep(i, n) {
+		xy[x[i]].push_back(y[i]);
+		yx[y[i]].push_back(x[i]);
 	}
 
-	cout << ans << endl;
+	rep(i, 100010) {
+
+	}
 
 	return 0;
 }

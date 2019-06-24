@@ -42,43 +42,38 @@ ll gcd(ll a, ll b) {
 // Å¬Œö”{”
 ll lcm(ll a, ll b) {
 	return a / gcd(a, b) * b;
-}*/
+}
 
 
-int ABC130Emain() {
+int ABC131Cmain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n, m;
-	cin >> n >> m;
-	vector<int> s(n), t(m);
-	rep(i, n) cin >> s[i];
-	rep(i, m) cin >> t[i];
+	ll a, b, c, d;
+	cin >> a >> b >> c >> d;
 
-	vector<vector<ll>> sum(n + 1, vector<ll>(m + 1, 0));
-	vector<vector<ll>> dp(n + 1, vector<ll>(m + 1, 0));
-	dp[0][0] = 1;
-	rep(i, n) {
-		rep(j, m) {
-			if (s[i] == t[j]) {
-				dp[i + 1][j + 1] = sum[i][j] + 1;
-				dp[i + 1][j + 1] %= mod;
-			}
+	// c‚Ì”{”‚ÌŒÂ”
+	// d‚Ì”{”‚ÌŒÂ”
 
-			sum[i + 1][j + 1] = dp[i + 1][j + 1] +
-				sum[i + 1][j] + sum[i][j + 1] - sum[i][j];
-		}
-	}
+	ll canum = 0;
+	ll cbnum = 0;
+	ll danum = 0;
+	ll dbnum = 0;
 
-	ll ans = 0;
-	rep(i, n + 1) {
-		rep(j, m + 1) {
-			ans += dp[i][j];
-			ans %= mod;
-		}
-	}
+	canum = (a - 1) / c;
+	danum = (a - 1) / d;
+	cbnum = b / c;
+	dbnum = b / d;
 
-	cout << ans << endl;
+	ll cdanum = 0;
+	ll cdbnum = 0;
+	cdanum = (a - 1) / lcm(c, d);
+	cdbnum = b / lcm(c, d);
+
+	ll ans = cbnum + dbnum - canum - danum - (cdbnum - cdanum);
+
+	cout << b - a + 1 -  ans << endl;
 
 	return 0;
 }
+*/

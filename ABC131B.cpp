@@ -45,40 +45,30 @@ ll lcm(ll a, ll b) {
 }*/
 
 
-int ABC130Emain() {
+int ABC131Bmain() {
 	cin.tie(0);
 	ios::sync_with_stdio(false);
 
-	int n, m;
-	cin >> n >> m;
-	vector<int> s(n), t(m);
-	rep(i, n) cin >> s[i];
-	rep(i, m) cin >> t[i];
+	int n, l;
+	cin >> n >> l;
 
-	vector<vector<ll>> sum(n + 1, vector<ll>(m + 1, 0));
-	vector<vector<ll>> dp(n + 1, vector<ll>(m + 1, 0));
-	dp[0][0] = 1;
+	vector<int> taste(n, 0);
+
+	// ‚È‚é‚×‚­0‚É‹ß‚¢‚à‚Ì‚ğH‚×‚é
 	rep(i, n) {
-		rep(j, m) {
-			if (s[i] == t[j]) {
-				dp[i + 1][j + 1] = sum[i][j] + 1;
-				dp[i + 1][j + 1] %= mod;
-			}
-
-			sum[i + 1][j + 1] = dp[i + 1][j + 1] +
-				sum[i + 1][j] + sum[i][j + 1] - sum[i][j];
-		}
+		taste[i] = l + i;
 	}
 
-	ll ans = 0;
-	rep(i, n + 1) {
-		rep(j, m + 1) {
-			ans += dp[i][j];
-			ans %= mod;
-		}
+	sort(allof(taste), [&](int x, int y) {
+		return abs(x) < abs(y);
+	});
+
+	int sum = 0;
+	Rep(i,1, n) {
+		sum += taste[i];
 	}
 
-	cout << ans << endl;
+	cout << sum << endl;
 
 	return 0;
 }
